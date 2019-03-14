@@ -23,6 +23,7 @@ public class thLeggiSpazi extends Thread{
   
    public void run() {
         try {
+            
             datiCondivisi.getSemaforoGenera().acquire();
         } catch (InterruptedException ex) {
             Logger.getLogger(thLeggiSpazi.class.getName()).log(Level.SEVERE, null, ex);
