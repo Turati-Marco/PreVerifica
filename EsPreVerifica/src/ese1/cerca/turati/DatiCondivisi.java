@@ -34,7 +34,7 @@ public class DatiCondivisi {
         SpaziLetti=0;
         PuntiLetti=0;
         SemaforoConta = new Semaphore(0);
-        SemaforoGenera = new Semaphore(1);
+        SemaforoGenera = new Semaphore(2);
     }
     synchronized public void pushChar(char carattere) {
         buffer.add(carattere);
@@ -84,5 +84,11 @@ public class DatiCondivisi {
     synchronized public void incrementaNumPuntiInseriti(){
         PuntiInseriti++;
     }
-            
+    
+      public Semaphore getSemaforoConta(){
+          return SemaforoConta;
+      }  
+       public Semaphore getSemaforoGenera(){
+          return SemaforoGenera;
+      }  
 }
