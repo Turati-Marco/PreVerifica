@@ -6,6 +6,8 @@
 package ese1.cerca.turati;
 
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,7 +22,11 @@ public class thLeggiSpazi extends Thread{
     }
   
    public void run() {
-       datiCondivisi.getSemaforoGenera().acquire();
+        try {
+            datiCondivisi.getSemaforoGenera().acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(thLeggiSpazi.class.getName()).log(Level.SEVERE, null, ex);
+        }
         for(int i =0; i<datiCondivisi.getBufferLenght(); i++){
             if(datiCondivisi.getAt(i) == ' ')
                 datiCondivisi.incrementaNumSpaziLetti();
