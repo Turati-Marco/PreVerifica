@@ -20,9 +20,11 @@ public class thLeggiSpazi extends Thread{
     }
   
    public void run() {
+       datiCondivisi.getSemaforoGenera().acquire();
         for(int i =0; i<datiCondivisi.getBufferLenght(); i++){
             if(datiCondivisi.getAt(i) == ' ')
                 datiCondivisi.incrementaNumSpaziLetti();
         }
+        datiCondivisi.getSemaforoConta().release();
     }
 }
