@@ -6,6 +6,7 @@
 package ese1.cerca.turati;
 
 import java.util.Vector;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -23,12 +24,17 @@ public class DatiCondivisi {
     
     private int PuntiLetti;
     
+    private Semaphore SemaforoConta;//0
+    private Semaphore SemaforoGenera;
+    
    
     public DatiCondivisi() {
         SpaziInseriti=0;
         PuntiInseriti=0;
         SpaziLetti=0;
         PuntiLetti=0;
+        SemaforoConta = new Semaphore(0);
+        SemaforoGenera = new Semaphore(1);
     }
     synchronized public void pushChar(char carattere) {
         buffer.add(carattere);
