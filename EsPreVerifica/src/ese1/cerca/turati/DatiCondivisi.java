@@ -13,7 +13,7 @@ import java.util.Vector;
  */
 public class DatiCondivisi {
     
-    private Vector<Character> buffer = new Vector<Character>();
+    private Vector<Character> buffer = new Vector<Character>(10);
     
     private int SpaziInseriti;
     
@@ -30,52 +30,52 @@ public class DatiCondivisi {
         SpaziLetti=0;
         PuntiLetti=0;
     }
-    public void pushChar(char carattere) {
+    synchronized public void pushChar(char carattere) {
         buffer.add(carattere);
     }
     
-    public char getAt(int i){
+    synchronized public char getAt(int i){
         return buffer.get(i);
     }
     
-    public Vector<Character> getBuffer() {
+    synchronized public Vector<Character> getBuffer() {
         return buffer;
     }
 
     
-    public int getNumSpaziInseriti() {
+    synchronized public int getNumSpaziInseriti() {
         return SpaziInseriti;
     }
 
-    public int getNumPuntiInseriti() {
+    synchronized public int getNumPuntiInseriti() {
         return PuntiInseriti;
     }
 
-    public int getNumSpaziLetti() {
+    synchronized public int getNumSpaziLetti() {
         return SpaziLetti;
     }
     
     
-    public void incrementaNumSpaziLetti() {
+   synchronized  public void incrementaNumSpaziLetti() {
         SpaziLetti++;
     }
    
-    public int getNumPuntiLetti() {
+    synchronized public int getNumPuntiLetti() {
         return PuntiLetti;
     }
     
     
-    public void incrementaNumPuntiLetti() {
+    synchronized public void incrementaNumPuntiLetti() {
         PuntiLetti++;
     }
-    public int getBufferLenght(){
+    synchronized public int getBufferLenght(){
         return buffer.size();
     }
-    public void incrementaNumSpaziInseriti(){
+    synchronized public void incrementaNumSpaziInseriti(){
         SpaziInseriti++;
     }
     
-    public void incrementaNumPuntiInseriti(){
+    synchronized public void incrementaNumPuntiInseriti(){
         PuntiInseriti++;
     }
             
